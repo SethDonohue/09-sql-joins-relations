@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 3000;
 const app = express();
 // DONE: Don't forget to set your own conString.
-const conString = 'postgres://postgres:4166@localhost:5432/kilovolt';
+const conString = 'postgressql://postgres:tehcake1989@localhost:5432/kilovolt';
 const client = new pg.Client(conString);
 client.connect();
 client.on('error', error => {
@@ -31,7 +31,7 @@ app.get('/articles', (request, response) => {
     SELECT *
     FROM articles
     INNER JOIN authors
-    ON articles.author_id=authors.author_id;
+    ON articles.author_id = authors.author_id
     `)
     .then(result => {
       response.send(result.rows);
@@ -47,7 +47,7 @@ app.post('/articles', (request, response) => {
   client.query(
     `
     INSERT INTO
-    articles(author)
+    authors(author, "authorUrl")
     VALUES($1, $2)
     ON CONFLICT DO NOTHING`,
     [
@@ -62,13 +62,13 @@ app.post('/articles', (request, response) => {
   )
 
   function queryTwo() {
-    // TODO: Write a SQL query to retrieve the author_id from the authors table for the new article.
+    // done: Write a SQL query to retrieve the author_id from the authors table for the new article.
     // DONE: In the provided array, add the author name as data for the SQL query.
     client.query(
       `
       SELECT author_id
       FROM authors
-      WHERE author_id=($1);`,
+      WHERE author = $1;`,
       [
         request.body.author
       ],
@@ -82,11 +82,19 @@ app.post('/articles', (request, response) => {
   }
 
   function queryThree(author_id) {
-    // TODO: Write a SQL query to insert the new article using the author_id from our previous query.
-    // TODO: In the provided array, add the data from our new article, including the author_id, as data for the SQL query.
+    // DONE: Write a SQL query to insert the new article using the author_id from our previous query.
+    // DONE: In the provided array, add the data from our new article, including the author_id, as data for the SQL query.
     client.query(
-      ``,
-      [],
+      `INSERT INTO
+      articles(author_id, title, author, "authorUrl", category, "publisheOn", body, )
+      VALUES($1, $2, $3, $4, $5)`,
+      [
+        author_id,
+        request.body.title,
+        request.body.category,
+        request.body.publishedOn,
+        request.body.body
+      ],
       function(err) {
         if (err) console.error(err);
         response.send('insert complete');
