@@ -78,24 +78,27 @@ _Your README.md must include:_
 ```md
 # Project Name
 
-**Author**: Your Name Goes Here
+**Author**: Seth Donahue and Garrett Johnson
 **Version**: 1.0.0 (increment the patch/fix version number up if you make more commits past your first submission)
 
 ## Overview
-<!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for a Code Fellows 301 class. (i.e. What's your problem domain?) -->
+This is a blog website that can now traverse user input data into the server and utilize all forms of CRUD.
 
 ## Getting Started
-<!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
+1. Set up your own conString.
+2. Write SQL that will join our existing SQL tables at the author_id.
+3. Write more SQL that will be able to insert a new author.
+4. Write another sequence of SQL that retrieves the author_id from the author's table for the new article.
+5. Write some more SQL that inserts the rest of the new article.
+6. Write more SQL that will not properly update pre-existing articles.
 
 ## Architecture
-<!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
+Ajax, jQuery, SQL, JavaScript, CSS, HTML and node
 
 ## Change Log
-<!-- Use this are to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an examples:
-
-01-01-2001 4:59pm - Application now has a fully-functional express server, with GET and POST routes for the book resource.
-
-## Credits and Collaborations
-<!-- Give credit (and a link) to other people or resources that helped you build this application. -->
--->
-```
+11/03/2017 9:30am - Garrett fixed his SQL and node
+11/03/2017 10:00am - We began to work through the first couple of TODO's
+11/03/2017 10:45am - Started to work on insertion of new author
+11/03/2017 11:30am - Finished up to the retrieval of data
+11/03/2017 12:15pm - Started on the insertion of the entire new article
+11/03/2017 1:40pm - Finished up Tests and updating the new article
